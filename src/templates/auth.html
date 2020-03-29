@@ -40,6 +40,7 @@
             <form id="signupForm" method='POST'> {% csrf_token %}
                 <h1>Create Account</h1>
 
+                <input type="hidden" value="signup" name="whichForm">
                 <input type="text" placeholder="Name" name="name" />
                 <input type="email" placeholder="Email" name="email"/>
                 <input type="password" placeholder="Password" name="password" />
@@ -52,8 +53,10 @@
 
 
         <div class="form-container sign-in-container">
-            <form> {% csrf_token %}
+            <form id="signinForm" method='POST'> {% csrf_token %}
                 <h1>Sign in</h1>
+
+                <input type="hidden" value="signin" name="whichForm">
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>

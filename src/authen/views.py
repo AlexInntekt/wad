@@ -10,24 +10,28 @@ class AuthView(View):
 
     def post(self,request, *args, **kwargs):
         post = request.POST
-
-        # print(post)
+        whichForm = post['whichForm']
+        print(whichForm)
         context = {}
 
-        form = SignUpForm(data=post, request=request)
-        if form.is_valid():
-            print('Form is valid!')
-            password = form.cleaned_data.get('password')
-            username = form.cleaned_data.get('name')
-            email = form.cleaned_data.get(email)
-            user = User(password=password, username=username, email=email)
-            user.save()
-            context['succesMessage'] = 'The user was created!'
-        else:
-            print('Errors in form!')
-            context['form'] = form
-            print(form.errors)
 
+
+        if(whichForm=='signup'):
+            form = SignUpForm(data=post, request=request)
+            if form.is_valid():
+                print('Form is valid!')
+                password = form.cleaned_data.get('password')
+                username = form.cleaned_data.get('name')
+                email = form.cleaned_data.get(email)
+                user = User(password=password, username=username, email=email)
+                user.save()
+                context['succesMessage'] = 'The user was created!'
+            else:
+                print('Errors in form!')
+                context['form'] = form
+                print(form.errors)
+        if(whichForm=='signin'):
+            pass
 
 
         return render(request, "auth.html", context)
