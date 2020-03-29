@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView, View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -6,6 +6,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .forms import SignUpForm, SignInForm
+
+
+
+def logoutView(request):
+    logout(request)
+    return redirect("auth")
 
 class AuthView(View):
 
