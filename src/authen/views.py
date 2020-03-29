@@ -17,7 +17,10 @@ class AuthView(View):
         form = SignUpForm(data=post, request=request)
         if form.is_valid():
             print('Form is valid!')
-            user = User(password=post['password'], username=post['name'], email=post['email'])
+            password = form.cleaned_data.get('password')
+            username = form.cleaned_data.get('name')
+            email = form.cleaned_data.get(email)
+            user = User(password=password, username=username, email=email)
             user.save()
             context['succesMessage'] = 'The user was created!'
         else:
