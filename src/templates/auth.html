@@ -1,22 +1,39 @@
-<!-- <!DOCTYPE html>
+{% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link rel="stylesheet" href="styles.css">
-</head> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
 
-{% extends "base.html" %}
-
-{% load static %}
-
-{% block title %} Logare / Creare cont{% endblock %}
-
-{% block body %} <body> {% endblock body %}
-
-{% block content %}
+<body class="loginpage">
+    <nav class="mynav">
+        <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
+        <div class="mybrand">AutoParts</div>
+        <a href="#" class="mytoggle">
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+        </a>
+        <div class="mylinks">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Parts</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="currentpage"><a href="login.html">Log In</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+    </nav>
 
     {% if user.is_authenticated %}
         Buna {{ user }}!
@@ -91,7 +108,18 @@
         </div>
     </div>
 
-{% endblock %}
 
-<script src="{% static 'js/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/homescript.js' %}"}></script>
+    <script src="{% static 'js/script.js' %}"}></script>
+</body>
 
+</html>
