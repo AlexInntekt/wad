@@ -17,7 +17,18 @@ class SignUpForm(forms.Form):
         name = self.cleaned_data['name']
         userAlreadyExists = User.objects.filter(username=name)
 
-        if userAlreadyExists.count != 0:
+        if userAlreadyExists.count() != 0:
             raise forms.ValidationError("This username is already taken!")
 
         return name
+
+
+class SignInForm(forms.Form):
+
+    email = forms.EmailField()
+    password = forms.CharField()
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super(SignInForm, self).__init__(*args, **kwargs)
+

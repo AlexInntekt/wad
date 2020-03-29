@@ -16,6 +16,9 @@
 
 {% block content %}
 
+    {% if user.is_authenticated %}
+        Buna {{ user }}!
+    {% endif %}
     
 
     {% if form.errors %}
@@ -26,6 +29,13 @@
             </div>
         {% endfor %}
 
+    {% endif %}
+
+
+    {% if errorMessage %}
+        <div class="alert alert-danger" role="alert">
+             {{ errorMessage}}
+        </div>
     {% endif %}
 
     {% if succesMessage %}
@@ -57,10 +67,10 @@
                 <h1>Sign in</h1>
 
                 <input type="hidden" value="signin" name="whichForm">
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" name="email" />
+                <input type="password" placeholder="Password" name="password" />
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button id="signinbutton" type="submit">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
