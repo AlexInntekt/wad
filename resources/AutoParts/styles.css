@@ -4,27 +4,301 @@
     box-sizing: border-box;
 }
 
-body {
+html {
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+}
+
+.homepage {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('images/double-bubble.png');
+    overflow-x: hidden;
+}
+
+.mynav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #292929;
+    color: #fff;
+    height: 60px;
+}
+
+.mylinks {
+    height: 60px;
+}
+
+.mylogo {
+    padding-left: 50px;
+}
+
+.mybrand {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.mylinks ul {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-left: 300px;
+    display: flex;
+}
+
+.mylinks li {
+    list-style: none;
+}
+
+.mylinks li a {
+    height: 100%;
+    margin-top: -4px;
+    text-decoration: none;
+    font-size: .8rem;
+    color: #fff;
+    padding: 1.6rem;
+    display: block;
+}
+
+.mylinks li:hover {
+    background-color: #6d6e6d;
+}
+
+.currentpage {
+    background-color: #8b8c8b;
+}
+
+.currentpage a {
+    color: #000 !important;
+}
+
+.mycart:hover {
+    color: #fff;
+}
+
+.mytoggle {
+    position: absolute;
+    top: 15px;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.loginpage .mytoggle {
+    top: 0;
+}
+
+.mytoggle .mybar {
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media (max-width: 1100px) {
+
+    .mynav{
+        height: auto;
+    }
+
+    .mylogo {
+        display: none;
+    }
+
+    .mytoggle {
+        display: flex;
+    }
+
+    .mylinks {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .mynav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mylinks ul {
+        width: 100%;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .mylinks li {
+        text-align: center;
+    }
+
+    .mylinks li a {
+        padding: .5rem 1rem;
+    }
+
+    .active {
+        display: flex;
+    }
+}
+
+.row {
+    margin-top: 150px;
+}
+
+/*.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+@media (min-width: 770px) {
+    .col-left {
+        padding-left: 40px;
+    }
+
+    .col-right {
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 770px) {
+    .col-left, .col-right {
+        padding: 0 20px 20px 20px;        
+    }
+}
+
+.leftcol, .rightcol {
+    height: 300px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #827E7E;
+}*/
+
+.container-fluid {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    }
+
+#startimage {
+    background-image: url(images/car5.jpg);
+    height: 100vh;
+}
+
+.welcometext {
+    position: absolute;
+    top: 22%;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+    /*background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));*/
+}
+
+#searchname {
+    margin-top: 20px;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 25px 0 0 25px;
+    border: none;
+    border-top: 1px solid slategray;
+    border-left: 1px solid slategray;
+    border-bottom: 1px solid slategray;
+    outline: none;
+    position: relative;
+}
+
+#submitbutton {
+    outline: none;
+    text-align: center;
+    border-radius: 0 25px 25px 0;
+    border: none;
+    border-top: 1px solid slategray;
+    border-right: 1px solid slategray;
+    border-bottom: 1px solid slategray;
+    padding: 10px 10px;
+    cursor: pointer;
+    background-color: #ffd08a;
+    color: #fff;
+    margin-left: -5px;
+}
+
+#godown {
+    position: absolute;
+    top: 94%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#goup {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.fa-chevron-down {
+    color: #fff;
+}
+
+.fa-chevron-up {
+    color: #000;
+}
+
+#presentation {
+    height: 93vh;
+}
+
+.row-presentation {
+    margin-top: 150px;
+    height: 500px;
+}
+
+.row-presentation img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid #000;
+}
+
+
+.col-presentation .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.loginpage {
     font-family: 'Ubuntu', sans-serif;
     background-image: url('images/double-bubble.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: -20px 0 50px;
+    padding-top: 150px;
 }
 
-h1 {
+.loginpage h1 {
     font-weight: bold;
     margin: 0
 }
 
-form h1 {
+.loginpage form h1 {
     margin-bottom: 30px;
 }
 
-p {
+.loginpage p {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
@@ -32,14 +306,14 @@ p {
     margin: 20px 0 30px;
 }
 
-a {
+.loginpage a {
     color: grey;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
 
-.container {
+.loginpage .container {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);

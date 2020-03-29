@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView, View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .forms import SignUpForm, SignInForm
 
@@ -52,6 +54,7 @@ class AuthView(View):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     login(request,user)
+                    return HttpResponseRedirect('/home/')
                 else:
                     context['errorMessage'] = 'Logare nereusita!'
 

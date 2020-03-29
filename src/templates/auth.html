@@ -10,7 +10,9 @@
 
 {% extends "base.html" %}
 
-{% block title %}Page not found{% endblock %}
+{% load static %}
+
+{% block title %} Logare / Creare cont{% endblock %}
 
 {% block body %} <body> {% endblock body %}
 
@@ -89,5 +91,7 @@
         </div>
     </div>
 
-
 {% endblock %}
+
+<script src="{% static 'js/script.js' %}"></script>
+

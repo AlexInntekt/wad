@@ -5,10 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="loginpage">
+    <nav class="mynav">
+        <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
+        <div class="mybrand">AutoParts</div>
+        <a href="#" class="mytoggle">
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+        </a>
+        <div class="mylinks">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Parts</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="currentpage"><a href="login.html">Log In</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
@@ -45,6 +67,7 @@
     </div>
 
     <script src="main.js"></script>
+    <script src="homescript.js"></script>
 </body>
 
 </html>
