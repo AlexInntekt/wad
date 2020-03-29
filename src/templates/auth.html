@@ -16,12 +16,30 @@
 
 {% block content %}
 
+    
 
+    {% if form.errors %}
+        
+        {% for key,value in form.errors.items %}
+            <div class="alert alert-danger" role="alert">
+                 {{ key }}:{{ value }} 
+            </div>
+        {% endfor %}
+
+    {% endif %}
+
+    {% if succesMessage %}
+        <div class="alert alert-info">
+             {{ succesMessage}}
+        </div>
+    {% endif %}
+    
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form id="signupForm" method='POST'> {% csrf_token %}
                 <h1>Create Account</h1>
+
                 <input type="text" placeholder="Name" name="name" />
                 <input type="email" placeholder="Email" name="email"/>
                 <input type="password" placeholder="Password" name="password" />
