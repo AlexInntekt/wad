@@ -23,4 +23,5 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('auth/', include('authen.urls')),
     path('', include('home.urls')),
+    path('', include('shop.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
