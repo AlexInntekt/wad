@@ -351,6 +351,12 @@ html {
     text-align: center;
 }
 
+.listview {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('/static/images/double-bubble.png');
+}
+
+
 .loginpage {
     font-family: 'Ubuntu', sans-serif;
     background-image: url('/static/images/double-bubble.png');

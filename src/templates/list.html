@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="homepage">
+<body class="listview">
 
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
@@ -29,8 +29,8 @@
 
         <div class="mylinks">
             <ul>
-                <li class="currentpage"><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'listview' %}">Parts</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="currentpage"><a href="{% url 'listview' %}">Parts</a></li>
                 <li><a href="{% url 'search' %}">Search</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="{% url 'auth' %}">Log In</a></li>
@@ -44,54 +44,8 @@
 	    {% endif %}
     </nav>
 
-    <div class="container-fluid" id="startimage"></div>
-
-    <div class="welcometext">
-        <h1>Welcome to AutoParts!</h1>
-        <form action="#">
-            <input type="text" id="searchname" name="searchname" placeholder="e.g. Air Filter">
-            <input type="submit" value="Search" id="submitbutton">
-        </form>
-    </div>
-
-    <div id="godown">
-        <a href="#presentation"><i class="fas fa-chevron-down fa-2x"></i></i></a>
-    </div>
-
-
-
-    <div id="presentation">
-
-        <div id="goup">
-            <a href="#startimage"><i class="fas fa-chevron-up fa-2x"></i></i></a>
-        </div>
-
-        <div class="row row-presentation">
-            <div class="col-md-4 col-presentation">
-                <div class="container">
-                    <img src="{% static 'images/car1.JPG' %}" alt=""><br><br><br><br>
-                    <h2>Place your order!</h2>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-presentation">
-                <div class="container">
-                    <img src="{% static 'images/car2.JPG' %}" alt=""><br><br><br><br>
-                    <h2>Add your products to cart!</h2>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-presentation">
-                <div class="container">
-                    <img src="{% static 'images/car3.JPG' %}" alt=""><br><br><br>
-                    <h2>We will ship your order <br> as soon as possible!</h2>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
+    
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

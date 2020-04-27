@@ -30,7 +30,7 @@
         <div class="mylinks">
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">Parts</a></li>
+                <li><a href="{% url 'listview' %}">Parts</a></li>
                 <li class="currentpage"><a href="{% url 'search' %}">Search</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="{% url 'auth' %}">Log In</a></li>
@@ -40,8 +40,8 @@
         </div>
 
         {% if user.is_authenticated %}
-	       <p> Hello, {{ user }}! </p>
-	    {% endif %}
+           <p> Hello, {{ user }}! </p>
+        {% endif %}
     </nav>
 
     <div class="scontainer">
@@ -53,7 +53,7 @@
         <input type="text" placeholder="Fuel Type" /><br>
         <button>Search</button>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
