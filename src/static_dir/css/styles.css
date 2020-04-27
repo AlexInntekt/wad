@@ -11,8 +11,9 @@ html {
 
 .homepage {
     font-family: 'Ubuntu', sans-serif;
-    background-image: url('../images/double-bubble.png');
+    background-image: url('/static/images/double-bubble.png');
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .mynav {
@@ -187,8 +188,10 @@ html {
     }
 
 #startimage {
-    background-image: url(../images/car5.jpg);
-    height: 100vh;
+    background-image: url(/static/images/car5.jpg);
+    background-size:100% 100%; 
+    background-repeat: no-repeat;
+    height: 105vh;
 }
 
 .welcometext {
@@ -271,6 +274,7 @@ html {
 }
 
 
+
 .col-presentation .container {
     justify-content: center;
     align-items: center;
@@ -279,9 +283,77 @@ html {
     padding: 0;
 }
 
+.partspage {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('/static/images/double-bubble.png');
+}
+
+.swiper-container {
+    width: 100%;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiper-slide {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.swiper-slide .imgbox {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    padding-left: -30px;
+}
+
+.swiper-slide .imgbox img {
+    width: 100%;
+}
+
+.swiper-slide .imgbox h1 {
+    text-align: center;
+    justify-content: center;
+    background-color: grey;
+    color: #fff;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.searchpage {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('/static/images/double-bubble.png');
+}
+
+.scontainer {
+    background: #fff;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 60%;
+    height: 500px;
+    margin: auto;
+    margin-top: 150px;
+    padding-top: 20px;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.scontainer input {
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 80%;
+    text-align: center;
+}
+
 .loginpage {
     font-family: 'Ubuntu', sans-serif;
-    background-image: url('../images/double-bubble.png');
+    background-image: url('/static/images/double-bubble.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
