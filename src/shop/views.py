@@ -16,6 +16,9 @@ class ListView(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
+    def post(self, request, *args, **kwargs):
+        return render(request, 'list.html')
+
     def get_queryset(self, **kwargs):
         print(kwargs)
         print(self.request)
@@ -27,8 +30,8 @@ class SearchView(TemplateView):
     def get(self, request, **kwargs):
         return render(request, 'search.html')
 
-    def post(self, request, **kwargs):
-        filters = {}
-        print(kwargs)
-        print(request.POST)
-        return redirect('listview')
+    # def post(self, request, **kwargs):
+    #     filters = request.POST
+
+    #     return redirect('listview',{"filters":1})
+    #     # return render(request, 'listview')
