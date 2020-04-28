@@ -43,14 +43,26 @@
 	       <p> Hello, {{ user }}! </p>
 	    {% endif %}
     </nav>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!-- <div class="" style="width: 90%; height: 100%"> -->
+    <ul class="list-group">
+        {% for object in object_list %}
+        <li class="list-group-item">
+             <p>{{ object.name }}  Pret: {{object.price}}$</p>
+             <p> Brand: {{ object.car_brand }} </p>
+             <p> Model: {{ object.car_model }} </p>
+             <p> Stock: {{ object.stock }} </p>
 
-    
-    {% for object in object_list %}
-
-         <h1>{{ object.name }}  Pret: {{object.price}}$</h1>
-
-    {% endfor %}
-
+             <br/>
+             <br/>
+             <br/>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- </div> -->
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

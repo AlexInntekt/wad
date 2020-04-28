@@ -33,7 +33,12 @@ class ListView(ListView):
             if(part_name!=''):
                 queryset = queryset.filter(name__contains=part_name)
             if(car!=''):
-                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name)) 
+                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name))
+            if(model!=''):
+                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name))
+            if(fuel_type!=''):
+                queryset = queryset.filter(name__contains=fuel_type)
+
         except Exception as e:
             pass   
 
