@@ -45,7 +45,7 @@
     </nav>
 
     <div class="scontainer">
-    <form method="post" action="{% url 'listview' %}"> {% csrf_token %}
+    <form method="get" action="{% url 'listview' %}"> {% csrf_token %}
         <h1>Search For Parts</h1>
         <input type="text" placeholder="Part Name" name="part_name"/><br>
         <input type="text" placeholder="Car" name="car" /><br>

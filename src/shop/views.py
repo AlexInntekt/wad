@@ -16,13 +16,28 @@ class ListView(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
-    def post(self, request, *args, **kwargs):
-        return render(request, 'list.html')
-
     def get_queryset(self, **kwargs):
-        print(kwargs)
-        print(self.request)
-        return Item.objects.all()
+        # print(kwargs)
+        queryset = Item.objects.all()
+
+        filters = self.request.GET
+        print(filters)
+
+        try:
+            part_name = filters['part_name']
+            car = filters['car']
+            model = 'model'
+            production_year = 'production_year'
+            fuel_type = 'fuel_type'
+
+            if(part_name!=''):
+                queryset = queryset.filter(name__contains=part_name)
+            if(car!=''):
+                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name)) 
+        except Exception as e:
+            pass   
+
+        return queryset
 
 class SearchView(TemplateView):
     template_name = 'search.html'
