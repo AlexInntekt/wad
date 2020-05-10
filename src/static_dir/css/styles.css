@@ -705,6 +705,63 @@ button.ghost {
     }
 }
 
+.detailspage {
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+.detcontainer h1 {
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: -30px;
+}
+
+.det-row {
+    margin: 40px auto;
+}
+
+.col-det {
+    padding-left: 50px;
+}
+
+.col-imgs {
+    padding-top: 150px;
+    padding-right: 100px;
+}
+
+.mySlides {
+    display: none;
+    background: #fff;
+    width: 300px;
+}
+
+@media (max-width: 800px) {
+    .col-imgs {
+        padding-right: 0;
+    }
+}
+
+hr {
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: auto;
+}
+
+.product-box h5 {
+    display: inline;
+}
+
+.to-cart {
+    margin: auto;
+    display: inline;
+    padding: 20px 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 45%;
+}
+
 .detailsim {
     margin-bottom: -15px;
 }
