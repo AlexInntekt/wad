@@ -33,24 +33,30 @@ class ListView(ListView):
         filters = self.request.GET
         print(filters)
 
-        try:
-            part_name = filters['part_name']
-            car = filters['car']
-            model = filters['model']
-            # production_year = 'production_year'
-            # fuel_type = 'fuel_type'
+        if "searchname" in filters:
+            try:
+                print("aoleooooooooooooo")
+            except Exception as e:
+                pass  
+        else:  
+            try:
+                part_name = filters['part_name']
+                car = filters['car']
+                model = filters['model']
+                # production_year = 'production_year'
+                # fuel_type = 'fuel_type'
 
-            # if(part_name!=''):
-            #     queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name) | Q(name__contains=part_name))
-            # if(car!=''):
-            queryset = queryset.filter(name__contains=car)
-        # if(model!=''):
-        #     queryset = queryset.filter(Q(car_band__contains=model) | Q(car_model__contains=model) | Q(name__contains=model))
-        # if(fuel_type!=''):
-        #     queryset = queryset.filter(name__contains=fuel_type)
+                # if(part_name!=''):
+                #     queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name) | Q(name__contains=part_name))
+                # if(car!=''):
+                queryset = queryset.filter(name__contains=car)
+            # if(model!=''):
+            #     queryset = queryset.filter(Q(car_band__contains=model) | Q(car_model__contains=model) | Q(name__contains=model))
+            # if(fuel_type!=''):
+            #     queryset = queryset.filter(name__contains=fuel_type)
 
-        except Exception as e:
-            pass   
+            except Exception as e:
+                pass   
 
         return queryset
 

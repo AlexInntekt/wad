@@ -48,10 +48,25 @@
 
     <div class="welcometext">
         <h1>Welcome to AutoParts!</h1>
-        <form action="#">
-            <input type="text" id="searchname" name="searchname" placeholder="e.g. Air Filter">
-            <input type="submit" value="Search" id="submitbutton">
+
+        <form method="get" action="{% url 'listview' %}"> {% csrf_token %}
+            <input type="text" id="searchname" name="searchname" placeholder="Search by anything!">
+            <!-- <input type="submit" value="" id="submitbutton"> -->
+            <input type="submit" id="submitbutton"></button>
         </form>
+
+        <!-- <div class="scontainer">
+        <form method="get" action="{% url 'listview' %}"> {% csrf_token %}
+            <h1>Search For Parts</h1>
+            <input type="text" placeholder="Part Name" name="part_name"/><br>
+            <input type="text" placeholder="Car" name="car" /><br>
+            <input type="text" placeholder="Model" name="model"/><br>
+            <input type="text" placeholder="Production Year" id="production_year" name="production_year"/><br>
+            <input type="text" placeholder="Fuel Type" id="fuel_type" name="fuel_type"/><br>
+            <button type="submit">Search</button>
+        </form>
+        </div> -->
+
     </div>
 
     <div id="godown">
