@@ -107,15 +107,21 @@
     <div class="products-container">
 
         {% for object in object_list %}
+        
+
             <div class="product-box">
 
-                <img src="/media/{{object.images.first.image}}" class="detailsim">
+                <a href="/detail/{{object.id}}">
+                    <img src="/media/{{object.images.first.image}}" class="detailsim" id="{{object.id}}">
+                </a>
                 <h5 class="item-name"> {{ object.name }}  </h5>
+                
 <!--                 <h5 class="item-name"> Brand: {{ object.car_brand }} </h5>
                 <h5 class="item-name"> Model: {{ object.car_model }} </h5>
                 <h5 class="item-price"> Stock: {{ object.stock }} </h5> -->
                 <!-- <button class="to-cart"><i class="fas fa-shopping-cart"></i></button> -->
             </div>
+
         
         {% endfor %}
         <!-- <div class="product-box">
@@ -164,11 +170,15 @@
         });
 
 
-        $(document).ready(function () {
-            $('.detailsim').click(function () {
-                window.open('detail')
-            });
-        });
+        // $(document).ready(function () {
+        //     $('.detailsim').click(function () {
+        //         objs = document.getElementsByClassName("detailsim")
+        //         id = objs[0].getAttribute("id");
+        //         // alert(id)
+        //         url = 'detail/'+id
+        //         window.open(url)
+        //     });
+        // });
 
     </script>
 </body>

@@ -1,5 +1,157 @@
-{% block  item_entries %}
 
-{{ object.name }}
 
-{% endblock %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="detailspage">
+
+    <nav class="mynav">
+        <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
+        <div class="mybrand">AutoParts</div>
+        
+        <a href="#" class="mytoggle">
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+        </a>
+
+        <div class="mylinks">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'listview' %}">Parts</a></li>
+                <li class="currentpage"><a href="{% url 'search' %}">Search</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'auth' %}">Log In</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+           <p> Hello, {{ user }}! </p>
+        {% endif %}
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% block  item_entries %}
+
+
+    <div class="detcontainer" id="det">
+        <h1>Item Details</h1>
+        <br><br>
+        <hr>
+        <div class="row det-row">
+            <div class="col-md-6 col-det">
+                <label>Id: <input id="item-id" type="number" value="{{object.id}}" readonly></label><br>
+                <label>Name: <input id="item-name" type="text" value="{{ object.name }}" readonly></label><br>
+                <label>Producer: <input id="item-prod" type="text" value="{{object.car_brand}}" readonly></label><br>
+                <label>Car: <input id="item-car" type="text" value="{{object.car_model}}" readonly></label><br>
+                <label>Model: <input id="item-model" type="text" value="{{object.car_model}}" readonly></label><br>
+                <!-- <label>Production Year: <input id="item-py" type="text" value="2008" readonly></label><br> -->
+                <!-- <label>Fuel Type: <input id="item-ft" type="text" value="Diesel" readonly></label><br> -->
+                <label>Price: <input id="item-price" type="number" value="{{object.price}}" step="0.01" readonly></label><br>
+            </div>
+            <div class="col-md-6 col-imgs">
+                <div class="w3-content w3-display-container">
+                    <img class="mySlides" src="/media/{{object.images.first.image}}" style="width:100%">
+                    <img class="mySlides" src="images/el.JPG" style="width:100%">
+                    <img class="mySlides" src="images/tir.JPG" style="width:100%">
+                    <img class="mySlides" src="images/br.JPG" style="width:100%">
+
+                    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                </div>
+            </div>
+        </div>
+        <button class="to-cart"><i class="fas fa-shopping-cart"></i></button>
+        <br><br><br><br>
+        <hr>
+
+    </div>
+
+     {% endblock %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/homescript.js' %}"}></script>
+
+    <script>
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || []
+        console.log(cart)
+
+        const itemDetails = document.getElementById('det')
+        itemDetails.onclick = function (e) {
+            if (e.target && e.target.classList.contains('to-cart')) {
+                const id = document.getElementById('item-id').value
+                const name = document.getElementById('item-name').value
+                const price = document.getElementById('item-price').value
+                //console.log(name.value, price.value)
+                const obj = { id: id, name: name, price: price, qty: 1 }
+                cart.push(obj)
+                const cart_serialized = JSON.stringify(cart)
+                localStorage.setItem("cart", cart_serialized)
+                console.log(cart)
+                window.alert('1 item added to cart!')
+            }
+        }
+
+        //const c = [{ name: 'Item55', price: 1.22, qty: 1 }, { name: 'Item66', price: 3.22, qty: 1 }]
+        //const cart_serialized = JSON.stringify(cart)
+        //localStorage.setItem("cart", cart_serialized)
+
+    </script>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
