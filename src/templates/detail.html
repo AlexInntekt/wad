@@ -59,13 +59,14 @@
         <hr>
         <div class="row det-row">
             <div class="col-md-6 col-det">
-                <label>Id: <input id="item-id" type="number" value="{{object.id}}" readonly></label><br>
+                <label>Product Id: <input id="item-id" type="number" value="{{object.id}}" readonly></label><br>
                 <label>Name: <input id="item-name" type="text" value="{{ object.name }}" readonly></label><br>
-                <label>Producer: <input id="item-prod" type="text" value="{{object.car_brand}}" readonly></label><br>
-                <label>Car: <input id="item-car" type="text" value="{{object.car_model}}" readonly></label><br>
-                <label>Model: <input id="item-model" type="text" value="{{object.car_model}}" readonly></label><br>
-                <!-- <label>Production Year: <input id="item-py" type="text" value="2008" readonly></label><br> -->
-                <!-- <label>Fuel Type: <input id="item-ft" type="text" value="Diesel" readonly></label><br> -->
+                <label>Producer/brand: <input id="item-prod" type="text" value="{{object.brand}}" readonly></label><br>
+
+                {% for key,value in object.data.items %}
+                <label>{{ key }} <input id="item-id" type="number" value="{{value}}" readonly></label><br>
+                {% endfor %}
+                
                 <label>Price: <input id="item-price" type="number" value="{{object.price}}" step="0.01" readonly></label><br>
             </div>
             <div class="col-md-6 col-imgs">
