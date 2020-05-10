@@ -48,8 +48,9 @@ class ListView(ListView):
                 print("General search.")
                 Qd = Q()
 
-                Qd |= Q(name__contains=keyword)
-                Qd |= Q(brand__contains=keyword)
+                Qd |= Q(name__icontains=keyword)
+                Qd |= Q(brand__icontains=keyword)
+                Qd |= Q(data__icontains=keyword)
 
                 queryset = queryset.filter(Qd)
 
@@ -66,11 +67,11 @@ class ListView(ListView):
                 
                 if(name != ''):
                     print("\n\n\n\n\nasd")
-                    Qd &= Q(name__contains=name)
+                    Qd &= Q(name__icontains=name)
                     # queryset = queryset.filter(Qd)
 
                 if(brand != ''):
-                    Qd &= Q(brand__contains=brand)
+                    Qd &= Q(brand__icontains=brand)
 
 
                 queryset = queryset.filter(Qd)
