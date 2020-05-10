@@ -1,0 +1,211 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="searchpage">
+
+    <nav class="mynav">
+        <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
+        <div class="mybrand">AutoParts</div>
+        
+        <a href="#" class="mytoggle">
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+        </a>
+
+        <div class="mylinks">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'listview' %}">Parts</a></li>
+                <li><a href="{% url 'search' %}">Search</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'auth' %}">Log In</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+           <p> Hello, {{ user }}! </p>
+        {% endif %}
+    </nav>
+
+
+    <br>
+    <br>
+    <br>
+    
+    <div class="container-cart">
+        <div id="cart-qty"></div>
+
+        <ul id="item-list">
+            <!--Cart items-->
+        </ul>
+
+        <div id="cart-total"></div>
+
+        <button id="checkout">Checkout</button>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/homescript.js' %}"}></script>
+
+    <script>
+
+        const itemList = document.getElementById('item-list')
+        const cartQty = document.getElementById('cart-qty')
+        const totalPrice = document.getElementById('cart-total')
+        //const addForm = document.getElementById('add-form')
+        const itemName = document.getElementById('item-name')
+        const itemPrice = document.getElementById('item-price')
+        const checkout = document.getElementById('checkout')
+
+        const cart = []
+        const c = JSON.parse(localStorage.getItem("cart"))
+
+        console.log(c)
+
+
+        function initialize(c) {
+            for (let i = 0; i < c.length; i += 1) {
+                for (let j = 0; j < c[i].qty; j += 1)
+                    addItem(c[i].id, c[i].name, c[i].price)
+            }
+        }
+
+        initialize(c)
+
+        itemList.onclick = function (e) {
+            if (e.target && e.target.classList.contains('remove')) {
+                const name = e.target.dataset.name
+                removeItem(name)
+            } else if (e.target && e.target.classList.contains('add-one')) {
+                const name = e.target.dataset.name
+                const id = e.target.dataset.id
+                addItem(id, name)
+            } else if (e.target && e.target.classList.contains('remove-one')) {
+                const name = e.target.dataset.name
+                removeItem(name, 1)
+            }
+        }
+
+        /*addForm.onsubmit = function (e) {
+            e.preventDefault()
+            const name = itemName.value
+            const price = itemPrice.value
+            addItem(name, price)
+        }*/
+
+        function addItem(id, name, price) {
+            for (let i = 0; i < cart.length; i += 1) {
+                if (cart[i].name === name) {
+                    cart[i].qty += 1
+                    showItems()
+
+                    const cart_serialized = JSON.stringify(cart)
+                    localStorage.setItem("cart", cart_serialized)
+
+                    return
+                }
+            }
+            const item = { id, name, price, qty: 1 }
+            cart.push(item)
+            showItems()
+        }
+
+        function showItems() {
+            const qty = getQty()
+            cartQty.innerHTML = `You have ${qty} items in your cart:`
+
+            let itemStr = ''
+            for (let i = 0; i < cart.length; i += 1) {
+                const { id, name, price, qty } = cart[i]
+                itemStr += `<li> ${name} $${price} x ${qty} = ${(qty * price).toFixed(3)}
+                    <button class="remove" data-name="${name}">Remove</button>
+                    <button class="add-one" data-name="${name}" data-id="${id}">+</button>
+                    <button class="remove-one" data-name="${name}">-</button>
+                    </li>`
+            }
+            itemList.innerHTML = itemStr
+
+            const total = getTotal()
+            totalPrice.innerHTML = `Total price is $${total}`
+        }
+
+        function getQty() {
+            let qty = 0
+            for (let i = 0; i < cart.length; i += 1) {
+                qty += cart[i].qty
+            }
+            return qty
+        }
+
+        function getTotal() {
+            let total = 0
+            for (let i = 0; i < cart.length; i += 1) {
+                total += cart[i].price * cart[i].qty
+            }
+            return total.toFixed(3)
+        }
+
+        function removeItem(name, qty = 0) {
+            for (let i = 0; i < cart.length; i += 1) {
+                if (cart[i].name === name) {
+                    if (qty > 0) {
+                        cart[i].qty -= qty
+                    }
+
+                    if (cart[i].qty < 1 || qty === 0) {
+                        cart.splice(i, 1)
+                    }
+                    showItems()
+
+                    const cart_serialized = JSON.stringify(cart)
+                    localStorage.setItem("cart", cart_serialized)
+
+                    return
+                }
+            }
+        }
+
+        checkout.onclick = function (e) {
+            const result = window.confirm('Proceed to paying methods?')
+            if (result === true) {
+                localStorage.clear()
+                location.reload()
+            }
+        }
+
+
+        showItems()
+
+
+
+    </script>
+
+</body>
+
+</html>

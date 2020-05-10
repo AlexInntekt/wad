@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from shop.views import CheckoutView, CartView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('auth/', include('authen.urls')),
     path('', include('home.urls')),
     path('', include('shop.urls')),
+    path('checkout', CheckoutView.as_view(), name='checkoutview'),
+    path('cart', CartView.as_view(), name='cartview'),
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

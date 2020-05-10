@@ -8,6 +8,12 @@ from django.views.generic import DetailView
 from .models import Item
 
 
+class CartView(TemplateView):
+    template_name = 'cart.html'
+
+class CheckoutView(TemplateView):
+    template_name = 'checkout.html'
+
 class DetailView(DetailView):
     template_name = 'detail.html'
     model = Item
