@@ -13,6 +13,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="{% static 'css/swiper.min.css' %}" rel="stylesheet" type="text/css">
 </head>
 
 <body class="partspage">
@@ -47,18 +48,72 @@
     <br/>
     <br/>
     <br/>
-    <!-- <div class="" style="width: 90%; height: 100%"> -->
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/trans.jpg' %}">
+                    <a href="">
+                        <h1>Transmission</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/eng.jpg' %}">
+                    <a href="">
+                        <h1>Engine</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/body.jpg' %}">
+                    <a href="">
+                        <h1>Body</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/el.jpg' %}">
+                    <a href="">
+                        <h1>Electric</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/br.jpg' %}">
+                    <a href="">
+                        <h1>Brakes</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="{% static 'images/tir.jpg' %}">
+                    <a href="">
+                        <h1>Tires</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 
     <div class="products-container">
-    <!-- <ul class="list-group"> -->
+
         {% for object in object_list %}
             <div class="product-box">
-                {% static '{{object.images.first.image}}' %}
+
                 <img src="/media/{{object.images.first.image}}" class="detailsim">
-                <h5 class="item-name"> {{ object.name }}  Pret: {{object.price}}$</h5>
-                <h5 class="item-name"> Brand: {{ object.car_brand }} </h5>
+                <h5 class="item-name"> {{ object.name }}  </h5>
+<!--                 <h5 class="item-name"> Brand: {{ object.car_brand }} </h5>
                 <h5 class="item-name"> Model: {{ object.car_model }} </h5>
-                <h5 class="item-price"> Stock: {{ object.stock }} </h5>
+                <h5 class="item-price"> Stock: {{ object.stock }} </h5> -->
                 <!-- <button class="to-cart"><i class="fas fa-shopping-cart"></i></button> -->
             </div>
         
@@ -68,9 +123,8 @@
             <h5 class="item-name">Part 1</h5>
             <h5 class="item-price">$130</h5>
             -->
-        </div> -->
-    <!-- </ul> -->
-    <!-- </div> -->
+        </div> 
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -83,7 +137,40 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/homescript.js' %}"}></script>
+    
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script>
 
+        /*const c = []
+        const c_serialized = JSON.stringify(c)
+        localStorage.setItem("cart", c_serialized)*/
+
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            initialSlide: 2,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+
+        $(document).ready(function () {
+            $('.detailsim').click(function () {
+                window.open('details.html')
+            });
+        });
+
+    </script>
 </body>
 
 </html>
