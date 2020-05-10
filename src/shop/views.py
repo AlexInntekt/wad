@@ -3,8 +3,18 @@ from django.views.generic import TemplateView
 from django.views import generic
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 
 from .models import Item
+
+
+class DetailView(DetailView):
+    template_name = 'detail.html'
+    model = Item
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     return context
 
 
 
