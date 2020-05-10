@@ -64,7 +64,7 @@
                 <label>Producer/brand: <input id="item-prod" type="text" value="{{object.brand}}" readonly></label><br>
 
                 {% for key,value in object.data.items %}
-                <label>{{ key }} <input id="item-id" type="number" value="{{value}}" readonly></label><br>
+                <label>{{ key }} <input type="text" value="{{value}}" readonly></label><br>
                 {% endfor %}
                 
                 <label>Price: <input id="item-price" type="number" value="{{object.price}}" step="0.01" readonly></label><br>
