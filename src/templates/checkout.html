@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="searchpage">
+<body class="paypage">
 
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
@@ -35,7 +35,7 @@
                 <li><a href="#">Contact</a></li>
                 <li><a href="{% url 'auth' %}">Log In</a></li>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
-                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <li class="currentpage"><a href="{% url 'cartview' %}"><i class="fas fa-shopping-cart"></i></a></li>
             </ul>
         </div>
 
@@ -43,6 +43,78 @@
            <p> Hello, {{ user }}! </p>
         {% endif %}
     </nav>
+
+    <br>
+    <br>
+
+
+
+
+    <div class="rowpay">
+        <div class="col-100">
+            <div class="paycont">
+                <form action="">
+                    <div class="rowpay">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+
+                            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="name">
+
+                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                            <input type="text" id="email">
+
+                            <label for="adr"><i class="fas fa-address-card"></i> Address</label>
+                            <input type="text" id="adr">
+
+                            <label for="city"><i class="fas fa-university"></i> City</label>
+                            <input type="text" id="city">
+
+                            <div class="rowpay">
+                                <div class="col-50">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state">
+                                </div>
+                                <div class="col">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" id="zip">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="name">Accepted Card</label>
+                            <div class="icon-container">
+                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-mastercard"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname">
+
+                            <label for="cnum">Card Number</label>
+                            <input type="text" id="cnum">
+
+                            <label for="expm">Exp Month</label>
+                            <input type="text" id="expm">
+
+                            <div class="rowpay">
+                                <div class="col-50">
+                                    <label for="expy">Exp Year</label>
+                                    <input type="text" id="expy">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv">
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Continue" class="btn">
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

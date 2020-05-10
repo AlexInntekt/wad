@@ -4,6 +4,7 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
+from django.db.models import Q
 
 from .models import Item
 
@@ -39,9 +40,19 @@ class ListView(ListView):
         filters = self.request.GET
         print(filters)
 
+
         if "searchname" in filters:
             try:
-                print("aoleooooooooooooo")
+                keyword = filters["searchname"]
+
+                print("General search.")
+                Qd = Q()
+
+                Qd |= Q(name__contains=keyword)
+                Qd |= Q(car_brand__contains=keyword)
+
+                queryset = queryset.filter(Qd)
+
             except Exception as e:
                 pass  
         else:  
