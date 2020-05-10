@@ -49,8 +49,7 @@ class ListView(ListView):
                 Qd = Q()
 
                 Qd |= Q(name__contains=keyword)
-                Qd |= Q(car_brand__contains=keyword)
-                Qd |= Q(car_model__contains=keyword)
+                Qd |= Q(brand__contains=keyword)
 
                 queryset = queryset.filter(Qd)
 
@@ -62,20 +61,17 @@ class ListView(ListView):
 
                 print(filters)
 
-                part_name = filters['part_name']
-                car_brand = filters['car']
-                model = filters['model']
+                name = filters['name']
+                brand = filters['brand']
                 
-                if(part_name != ''):
+                if(name != ''):
                     print("\n\n\n\n\nasd")
-                    Qd &= Q(name__contains=part_name)
+                    Qd &= Q(name__contains=name)
                     # queryset = queryset.filter(Qd)
 
-                if(car_brand != ''):
-                    Qd &= Q(car_brand__contains=car_brand)
+                if(brand != ''):
+                    Qd &= Q(brand__contains=brand)
 
-                if(model != ''):
-                    Qd &= Q(car_model__contains=model)
 
                 queryset = queryset.filter(Qd)
 
