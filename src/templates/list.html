@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="listview">
+<body class="partspage">
 
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
@@ -48,22 +48,30 @@
     <br/>
     <br/>
     <!-- <div class="" style="width: 90%; height: 100%"> -->
-    <ul class="list-group">
+
+    <div class="products-container">
+    <!-- <ul class="list-group"> -->
         {% for object in object_list %}
-        <li class="list-group-item">
-             <p>{{ object.name }}  Pret: {{object.price}}$</p>
-             <p> Brand: {{ object.car_brand }} </p>
-             <p> Model: {{ object.car_model }} </p>
-             <p> Stock: {{ object.stock }} </p>
-
-             <br/>
-             <br/>
-             <br/>
-        </li>
+            <div class="product-box">
+                {% static '{{object.images.first.image}}' %}
+                <img src="/media/{{object.images.first.image}}" class="detailsim">
+                <h5 class="item-name"> {{ object.name }}  Pret: {{object.price}}$</h5>
+                <h5 class="item-name"> Brand: {{ object.car_brand }} </h5>
+                <h5 class="item-name"> Model: {{ object.car_model }} </h5>
+                <h5 class="item-price"> Stock: {{ object.stock }} </h5>
+                <!-- <button class="to-cart"><i class="fas fa-shopping-cart"></i></button> -->
+            </div>
+        
         {% endfor %}
-    </ul>
+        <!-- <div class="product-box">
+            <img src="/static/images/br.JPG" class="detailsim">
+            <h5 class="item-name">Part 1</h5>
+            <h5 class="item-price">$130</h5>
+            -->
+        </div> -->
+    <!-- </ul> -->
     <!-- </div> -->
-
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

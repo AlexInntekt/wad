@@ -26,18 +26,18 @@ class ListView(ListView):
         try:
             part_name = filters['part_name']
             car = filters['car']
-            model = 'model'
-            production_year = 'production_year'
-            fuel_type = 'fuel_type'
+            model = filters['model']
+            # production_year = 'production_year'
+            # fuel_type = 'fuel_type'
 
-            if(part_name!=''):
-                queryset = queryset.filter(name__contains=part_name)
-            if(car!=''):
-                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name))
-            if(model!=''):
-                queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name))
-            if(fuel_type!=''):
-                queryset = queryset.filter(name__contains=fuel_type)
+            # if(part_name!=''):
+            #     queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name) | Q(name__contains=part_name))
+            # if(car!=''):
+            queryset = queryset.filter(name__contains=car)
+        # if(model!=''):
+        #     queryset = queryset.filter(Q(car_band__contains=model) | Q(car_model__contains=model) | Q(name__contains=model))
+        # if(fuel_type!=''):
+        #     queryset = queryset.filter(name__contains=fuel_type)
 
         except Exception as e:
             pass   

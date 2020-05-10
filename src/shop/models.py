@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 class Item(models.Model):
 	name = models.CharField(max_length=100)
@@ -11,3 +13,11 @@ class Item(models.Model):
 
 	def __str__(self):
 		return "#{} {} ".format(self.id, self.name)
+
+
+class Image(models.Model):
+    '''
+    Object that references an image for different other models
+    '''
+    image = models.FileField(upload_to='hubImages/', blank=False)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='images')
