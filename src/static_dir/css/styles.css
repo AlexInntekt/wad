@@ -705,63 +705,6 @@ button.ghost {
     }
 }
 
-.detailspage {
-    font-family: 'Ubuntu', sans-serif;
-    
-}
-
-.detcontainer h1 {
-    text-align: center;
-    padding-top: 20px;
-    margin-bottom: -30px;
-}
-
-.det-row {
-    margin: 40px auto;
-}
-
-.col-det {
-    padding-left: 50px;
-}
-
-.col-imgs {
-    padding-top: 150px;
-    padding-right: 100px;
-}
-
-.mySlides {
-    display: none;
-    background: #fff;
-    width: 300px;
-}
-
-@media (max-width: 800px) {
-    .col-imgs {
-        padding-right: 0;
-    }
-}
-
-hr {
-    border-bottom: 1px solid black;
-    width: 80%;
-    margin: auto;
-}
-
-.product-box h5 {
-    display: inline;
-}
-
-.to-cart {
-    margin: auto;
-    display: inline;
-    padding: 20px 50px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    left: 45%;
-}
-
 .detailsim {
     margin-bottom: -15px;
 }
@@ -818,4 +761,87 @@ hr {
 #checkout {
     margin: auto;
     margin-top: 30px;
+}
+
+.paypage h3 {
+    text-align: center;
+}
+
+.rowpay {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin:0 -10px;
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+    padding: 0 15px;
+}
+
+.col-100 {
+    -ms-flex: 100%;
+    flex: 100%;
+    padding: 0 15px;
+}
+
+.paycont {
+    background-color: #ebebe0;
+    padding: 3px 18px 13px 18px;
+    
+    border-radius: 3px;
+    margin-top: 40px;
+}
+
+.paypage input[type="text"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.paypage label {
+    margin-bottom: 10px;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.paypage .btn {
+    background-color: #ffd08a;
+    color: #000;
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.detailspage textarea {
+    width: 80%;
+    margin: auto;
+    margin-left: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailspage input[type="submit"] {
+    width: 30%;
+    margin-left: 33%;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.rev {
+    border: 1px solid #000;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
 }
