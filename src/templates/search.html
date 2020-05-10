@@ -47,11 +47,9 @@
     <div class="scontainer">
     <form method="get" action="{% url 'listview' %}"> {% csrf_token %}
         <h1>Search For Parts</h1>
-        <input type="text" placeholder="Part Name" name="part_name"/><br>
-        <input type="text" placeholder="Car" name="car" /><br>
+        <input type="text" placeholder="Name" name="part_name"/><br>
+        <input type="text" placeholder="Car brand" name="car" /><br>
         <input type="text" placeholder="Model" name="model"/><br>
-        <input type="text" placeholder="Production Year" id="production_year" name="production_year"/><br>
-        <input type="text" placeholder="Fuel Type" id="fuel_type" name="fuel_type"/><br>
         <button type="submit">Search</button>
     </form>
     </div>

@@ -50,6 +50,7 @@ class ListView(ListView):
 
                 Qd |= Q(name__contains=keyword)
                 Qd |= Q(car_brand__contains=keyword)
+                Qd |= Q(car_model__contains=keyword)
 
                 queryset = queryset.filter(Qd)
 
@@ -57,20 +58,26 @@ class ListView(ListView):
                 pass  
         else:  
             try:
-                part_name = filters['part_name']
-                car = filters['car']
-                model = filters['model']
-                # production_year = 'production_year'
-                # fuel_type = 'fuel_type'
+                Qd = Q()
 
-                # if(part_name!=''):
-                #     queryset = queryset.filter(Q(car_band__contains=part_name) | Q(car_model__contains=part_name) | Q(name__contains=part_name))
-                # if(car!=''):
-                queryset = queryset.filter(name__contains=car)
-            # if(model!=''):
-            #     queryset = queryset.filter(Q(car_band__contains=model) | Q(car_model__contains=model) | Q(name__contains=model))
-            # if(fuel_type!=''):
-            #     queryset = queryset.filter(name__contains=fuel_type)
+                print(filters)
+
+                part_name = filters['part_name']
+                car_brand = filters['car']
+                model = filters['model']
+                
+                if(part_name != ''):
+                    print("\n\n\n\n\nasd")
+                    Qd &= Q(name__contains=part_name)
+                    # queryset = queryset.filter(Qd)
+
+                if(car_brand != ''):
+                    Qd &= Q(car_brand__contains=car_brand)
+
+                if(model != ''):
+                    Qd &= Q(car_model__contains=model)
+
+                queryset = queryset.filter(Qd)
 
             except Exception as e:
                 pass   
