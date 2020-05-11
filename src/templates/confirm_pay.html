@@ -8,14 +8,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
+    <title>Plata confirmata</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="searchpage">
+<body class="text-center">
 
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
@@ -44,14 +44,33 @@
         {% endif %}
     </nav>
 
-    <div class="scontainer">
-    <form method="get" action="{% url 'listview' %}"> {% csrf_token %}
-        <h1>Search For Parts</h1>
-        <input type="text" placeholder="Name" name="name"/><br>
-        <input type="text" placeholder="Brand" name="brand" /><br>
-        <button type="submit">Search</button>
-    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      
+  
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">The order was paid and confirmed.</h1>
+        <p class="lead">The payment was accepted. You will soon receive an email with more information regarding the delivery.</p>
+        <p class="lead">
+          <a href="{% url 'home' %}" class="btn btn-lg btn-secondary">Go to Homepage</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          AWB: 87Y2938FH9437T
+        </div>
+      </footer>
     </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -63,6 +82,11 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/homescript.js' %}"}></script>
+
+    <script>
+        localStorage.clear()
+        // location.reload()
+    </script>
 
 </body>
 

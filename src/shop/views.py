@@ -15,6 +15,9 @@ class CartView(TemplateView):
 class CheckoutView(TemplateView):
     template_name = 'checkout.html'
 
+class ConfirmPayView(TemplateView):
+    template_name = 'confirm_pay.html'
+
 class DetailView(DetailView):
     template_name = 'detail.html'
     model = Item
@@ -22,8 +25,6 @@ class DetailView(DetailView):
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     return context
-
-
 
 class ListView(ListView):
     template_name = 'list.html'
