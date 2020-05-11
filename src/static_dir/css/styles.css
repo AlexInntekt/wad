@@ -902,3 +902,12 @@ hr {
     margin: 20px auto;
     padding: 20px;
 }
+
+.confirmation_pay {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('/static/images/double-bubble.png');
+}
+.contact {
+    font-family: 'Ubuntu', sans-serif;
+    background-image: url('/static/images/double-bubble.png');
+}

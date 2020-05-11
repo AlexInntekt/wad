@@ -8,14 +8,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plata confirmata</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="text-center confirmation_pay">
+<body class="contact">
 
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
@@ -31,8 +31,8 @@
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'listview' %}">Parts</a></li>
-                <li class="currentpage"><a href="{% url 'search' %}">Search</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'search' %}">Search</a></li>
+                <li class="currentpage"><a href="{% url 'contact' %}">Contact</a></li>
                 <li><a href="{% url 'auth' %}">Log In</a></li>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
                 <li><a href="{% url 'cartview' %}"><i class="fas fa-shopping-cart"></i></a></li>
@@ -45,32 +45,37 @@
     </nav>
 
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       
-  
 
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">The order was paid and confirmed.</h1>
-        <p class="lead">The payment was accepted. You will soon receive an email with more information regarding the delivery.</p>
-        <p class="lead">
-          <a href="{% url 'home' %}" class="btn btn-lg btn-secondary">Go to Homepage</a>
-        </p>
-      </main>
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          AWB: 87Y2938FH9437T
+    <div class="row row-contact">
+        <div class="col-md-6 col-map">
+            <div class="mapcontainer">
+                <div id="map"></div>
+            </div>
         </div>
-      </footer>
+        <div class="col-md-6 col-contact">
+            <div class="ccontainer">
+                <br>
+                <h1>Send a message</h1>
+                <input type="text" placeholder="Name" /><br>
+                <input type="text" placeholder="Email" /><br>
+                <textarea name="message" rows="3" cols="30" placeholder="Type something..."></textarea><br>
+                <button id="sendcontact">Send</button>
+            </div>
+        </div>
     </div>
 
-
+    <script>
+        function initMap() {
+            var location = { lat: 44.43874, lng: 26.059212 };
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: location
+            });
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -82,6 +87,9 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/homescript.js' %}"}></script>
+     <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrgI8h6-yZ5kTiK_loaoEKg56SiGrLm0U&callback=initMap">
+        </script>
 
     <script>
         localStorage.clear()
