@@ -55,8 +55,8 @@
         <div class="container-fluid">
         <h1 style="text-align: center;">Add Item</h1>
         <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-            <label for="iname">Item Name</label><br>
-            <input type="text" id="iname" name="name"><br>
+            <label for="name">Item Name</label><br>
+            <input type="text" id="name" name="name"><br>
 
             <label for="brand">Brand</label><br>
             <input type="text" id="brand" name="brand"><br>
@@ -79,44 +79,44 @@
 
             <div id="engineopt" style="display: none;">
                 <label for="power">Power</label><br>
-                <input type="text" id="power"><br>
+                <input type="text" id="power" name="power"><br>
                 <label for="cc">Cylinder Capacity</label><br>
-                <input type="text" id="cc"><br>
+                <input type="text" id="cc" name="cc"><br>
             </div>
 
             <div id="transmissionopt" style="display: none;">
                 <label for="fluid">Fluid Type</label><br>
-                <input type="text" id="fluid"><br>
+                <input type="text" id="fluid" name="fluid"><br>
                 <label for="turbine">Turbine Type</label><br>
-                <input type="text" id="turbine"><br>
+                <input type="text" id="turbine" name="turbine"><br>
             </div>
 
             <div id="bodyopt" style="display: none;">
                 <label for="doors">Number of Doors</label><br>
-                <input type="number" id="doors"><br>
+                <input type="number" id="doors" name="doors"><br>
                 <label for="width">Body Width</label><br>
-                <input type="number" id="width"><br>
+                <input type="number" id="width" name="width"><br>
             </div>
 
             <div id="electricopt" style="display: none;">
                 <label for="battery">Battery Power</label><br>
-                <input type="number" id="battery"><br>
+                <input type="number" id="battery" name="battery"><br>
                 <label for="alternator">Alternator Type</label><br>
-                <input type="text" id="alternator"><br>
+                <input type="text" id="alternator" name="alternator"><br>
             </div>
 
             <div id="tiresopt" style="display: none;">
                 <label for="tiretype">Tire Type</label><br>
-                <input type="text" id="power"><br>
+                <input type="text" id="power_tirespot" name="power_tirespot"><br>
                 <label for="diameter">Diameter</label><br>
-                <input type="number" id="diameter"><br>
+                <input type="number" id="diameter" name="diameter"><br>
             </div>
 
             <div id="brakesopt" style="display: none;">
                 <label for="material">Brakes Material</label><br>
-                <input type="text" id="material"><br>
-                <label for="discrad">Disc Radius</label><br>
-                <input type="number" id="discrad"><br>
+                <input type="text" id="material" name="metarial"><br>
+                <label for="discradius">Disc Radius</label><br>
+                <input type="number" id="discradius" name="discradius"><br>
             </div>
 
             <label for="imgs">Images</label><br>

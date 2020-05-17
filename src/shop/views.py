@@ -17,8 +17,17 @@ class AddItemAdminView(TemplateView):
         post = request.POST
         image_data = request.FILES
         print("\n\n\n\n\n")
-        print(post)
-        print(image_data['image'])
+        # print(post)
+        # print(image_data['image'])
+
+        dynamic_fields = {}
+
+        # print(post)
+        for key,value in post.items():
+            # print(value)
+            if key not in ['name','brand','price','stock','category','engine', 'csrfmiddlewaretoken'] and value != '':
+                print("{}:{} \n".format(key,value))
+                dynamic_fields[key] = value
 
         name = post['name']
         brand = post['brand']
@@ -26,7 +35,7 @@ class AddItemAdminView(TemplateView):
         stock = post['stock']
         category = post['category']
         category = Category.objects.filter(name__icontains=category).first()
-        data = {}
+        data = dynamic_fields
 
         new_item = Item()
         new_item.name = name
