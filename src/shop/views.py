@@ -35,8 +35,24 @@ class DetailView(TemplateView):
     #     context['message'] = "bau"
     #     return(context)
 
-    def post(self):
-        return render("ha post")
+    def post(self, request, *args, **kwargs):
+        current_object = Item.objects.get(id=kwargs['id'])
+        post = request.POST
+        new_review = Review()
+        new_review.text = post['message']
+        new_review.author = 'Anonymous'
+        new_review.save()
+        new_review.item = current_object
+
+
+        obj = current_object
+        reviews = obj.reviews.all()
+
+        context = {}
+        context['object'] = obj
+        context['reviews'] = reviews
+
+        return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         obj = Item.objects.get(id=kwargs['id'])
