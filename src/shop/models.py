@@ -23,6 +23,9 @@ class Item(models.Model):
     def __str__(self):
         return "#{} {} ".format(self.id, self.name)
 
+class Review(models.Model):
+    author = models.CharField(max_length=30)
+    text = models.TextField()
 
 class Image(models.Model):
     '''
