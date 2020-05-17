@@ -5,8 +5,9 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.db.models import Q
+# from django.views.generic.edit import FormMixin
 
-from .models import Item
+from .models import Item, Review
 
 
 class CartView(TemplateView):
@@ -18,22 +19,34 @@ class CheckoutView(TemplateView):
 class ConfirmPayView(TemplateView):
     template_name = 'confirm_pay.html'
 
-class DetailView(DetailView):
+class DetailView(TemplateView):
     template_name = 'detail.html'
-    model = Item
+    # model = Item
     
+    # def get_success_url(self):
+    #     return reverse('post_detail', kwargs={'pk': self.object.id})
 
-    def get_context_data(self, **kwargs):
-        context = super(DetailView, self).get_context_data(**kwargs)
-        ## the context is a list of the tasks of the Project##
-        ##THIS IS THE ERROR##
-        # context['tasks'] = Task.object.filter(list=Project) <---->HERE ((work with Task.object.all() ))
-        context['reviews'] = self.object.reviews.all()
-        context['message'] = "bau"
-        return(context)
+    # def get_context_data(self, **kwargs):
+    #     context = super(DetailView, self).get_context_data(**kwargs)
+    #     ## the context is a list of the tasks of the Project##
+    #     ##THIS IS THE ERROR##
+    #     # context['tasks'] = Task.object.filter(list=Project) <---->HERE ((work with Task.object.all() ))
+    #     context['reviews'] = self.object.reviews.all()
+    #     context['message'] = "bau"
+    #     return(context)
 
-    def post(self, **kwargs):
-        return render("haha")
+    def post(self):
+        return render("ha post")
+
+    def get(self, request, *args, **kwargs):
+        obj = Item.objects.get(id=kwargs['id'])
+        # reviews = Review.objects.filter(item__id=obj.id).first()
+        reviews = obj.reviews.all()
+
+        context = {}
+        context['object'] = obj
+        context['reviews'] = reviews
+        return render(request, self.template_name, context)
 
 class ContactView(TemplateView):
     template_name = 'contact.html'
