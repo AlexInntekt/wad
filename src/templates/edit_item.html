@@ -53,7 +53,7 @@
 
     <div class="" style="height: 1200px">
         <div class="container-fluid">
-        <h1 style="text-align: center;">Add Item</h1>
+        <h1 style="text-align: center;">Edit Item</h1>
         <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             <label for="name">Item Name</label><br>
             <input type="text" id="name" name="name"><br>
@@ -153,32 +153,32 @@
             var brakes = document.getElementById("brakesopt");
             var display = d.options[d.selectedIndex].text;
 
-            if (display === "engine")
+            if (display === "Engine")
                 engine.setAttribute("style", "display: show;")
             else
                 engine.style.display = "none";
 
-            if (display === "transmission")
+            if (display === "Transmission")
                 transmission.setAttribute("style", "display: show;")
             else
                 transmission.style.display = "none";
 
-            if (display === "body")
+            if (display === "Body")
                 body.setAttribute("style", "display: show;")
             else
                 body.style.display = "none";
 
-            if (display === "electric")
+            if (display === "Electric")
                 electric.setAttribute("style", "display: show;")
             else
                 electric.style.display = "none";
 
-            if (display === "brakes")
+            if (display === "Brakes")
                 brakes.setAttribute("style", "display: show;")
             else
                 brakes.style.display = "none";
 
-            if (display === "tires")
+            if (display === "Tires")
                 tires.setAttribute("style", "display: show;")
             else
                 tires.style.display = "none";
