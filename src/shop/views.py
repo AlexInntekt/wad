@@ -136,7 +136,7 @@ class ListView(ListView):
 
         return context
 
-    def get_queryset(self, **kwargs):
+    def get_queryset(self, *args, **kwargs):
         # print(kwargs)
         queryset = Item.objects.all()
 
@@ -144,11 +144,14 @@ class ListView(ListView):
         filters = self.request.GET
 
         try:
-            by_category = kwargs['by_category']
+            by_category = self.request.resolver_match.kwargs['category']
         except Exception:
             pass
 
-        print(kwargs)
+        # print(args)
+        # print(kwargs)
+        # print(self.request.__dict__)
+        # print(self.request.resolver_match.kwargs['category'])
 
         if "searchname" in filters:
             print("\n General search. \n")
@@ -169,7 +172,7 @@ class ListView(ListView):
         elif by_category != '':
             Qd = Q()
             print("\n\n Filtering by category \n\n")
-            Qd &= Q(category__icontains=by_category)
+            Qd &= Q(category__name__icontains=by_category)
 
             queryset = queryset.filter(Qd)
 
