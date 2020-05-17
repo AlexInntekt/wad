@@ -27,8 +27,16 @@ class EditCategoryAdminView(TemplateView):
         update = request.POST
         image_data = request.FILES
         print("\n\n\n\n\n")
-        name = update['name']
+        
 
+        try:
+            delete = update['delete']
+            Category.objects.get(id=kwargs['id']).delete()
+            return redirect('adminview')
+        except Exception:
+            pass
+            
+        name = update['name']
         category = Category.objects.get(id=kwargs['id'])
         category.name = name
         category.save()
