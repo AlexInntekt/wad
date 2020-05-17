@@ -23,9 +23,15 @@ class Item(models.Model):
     def __str__(self):
         return "#{} {} ".format(self.id, self.name)
 
+
 class Review(models.Model):
     author = models.CharField(max_length=30)
     text = models.TextField()
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews', null=True)
+
+    def __str__(self):
+        return "#{}. ({}) {}".format(self.id, self.item.name, self.text)
+
 
 class Image(models.Model):
     '''

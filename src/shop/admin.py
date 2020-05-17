@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, Image, Category
+from .models import Item, Image, Category, Review
 
 
 class PostImageInline(admin.StackedInline):
@@ -24,3 +24,4 @@ class ItemAdmin(admin.ModelAdmin):
 # # Register your models here.
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
+admin.site.register(Review)
