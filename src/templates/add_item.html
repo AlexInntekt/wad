@@ -1,0 +1,105 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="addpage">
+    
+    <nav class="mynav">
+        <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
+        <div class="mybrand">AutoParts</div>
+        
+        <a href="#" class="mytoggle">
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+            <span class="mybar"></span>
+        </a>
+
+        <div class="mylinks">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'listview' %}">Parts</a></li>
+                <li><a href="{% url 'search' %}">Search</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'auth' %}">Log In</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+                <li><a href="{% url 'cartview' %}"><i class="fas fa-shopping-cart"></i></a></li>
+
+                {% if user.is_staff %}
+                    <li class="currentpage"><a href="{% url 'adminview' %}">Admin</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+           <p> Hello, {{ user }}! </p>
+        {% endif %}
+    </nav>
+
+        <br>
+
+
+    <div class="" style="height: 1200px">
+        <div class="container-fluid">
+            <h1 style="text-align: center;">Add Item</h1>
+            <form action="">
+                <label for="iname">Item Name</label><br>
+                <input type="text" id="iname"><br>
+
+                <label for="data">Data</label><br>
+                <textarea id="data" rows="4" cols="50"></textarea><br>
+
+                <label for="brand">Brand</label><br>
+                <input type="text" id="brand"><br>
+
+                <label for="price">Price</label><br>
+                <input type="text" id="price"><br>
+
+                <label for="stock">Stock</label><br>
+                <input type="text" id="stock"><br>
+
+                <label for="cat">Category</label><br>
+                <select id="cat">
+                    <option value="transmission">Transmission</option>
+                    <option value="engine">Engine</option>
+                    <option value="body">Body</option>
+                    <option value="electric">Electric</option>
+                    <option value="brakes">Brakes</option>
+                    <option value="tires">Tires</option>
+                </select><br>
+
+                <label for="imgs">Images</label><br>
+                <input type="file" id="imgs" multiple><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+          
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+        <script src="{% static 'js/homescript.js' %}"}></script>
+       
+    </div>
+</body>
+
+</html>

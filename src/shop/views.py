@@ -9,6 +9,9 @@ from django.db.models import Q
 
 from .models import Item, Review
 
+class AddItemAdminView(TemplateView):
+    template_name = 'add_item.html'
+
 class AdminView(TemplateView):
     template_name = 'admin.html'
 
