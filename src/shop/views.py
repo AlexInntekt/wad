@@ -5,16 +5,26 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.db.models import Q
-# from django.views.generic.edit import FormMixin
 
-from .models import Item, Review, Category
+# from django.views.generic.edit import FormMixin
+from PIL import Image, ImageOps
+from .models import Item, Review, Category, Image
 
 class AddItemAdminView(TemplateView):
     template_name = 'add_item.html'
 
     def post(self, request, *args, **kwargs):
         post = request.POST
+        image_data = request.FILES
+        print("\n\n\n\n\n")
         print(post)
+        print(image_data['image'])
+
+        # for image in images:
+        new_image = Image()
+        new_image.image = image_data['image']
+        new_image.item = Item.objects.all().last()
+        new_image.save()
 
         name = post['name']
         brand = post['brand']

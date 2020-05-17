@@ -39,6 +39,6 @@ class Image(models.Model):
     '''
     Object that references an image for different other models
     '''
-    image = models.FileField(upload_to='hubImages/', blank=False)
+    image = models.ImageField(upload_to='hubImages/', blank=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='images')
 

@@ -54,7 +54,7 @@
     <div class="" style="height: 1200px">
         <div class="container-fluid">
         <h1 style="text-align: center;">Add Item</h1>
-        <form action="" method="POST"> {% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             <label for="iname">Item Name</label><br>
             <input type="text" id="iname" name="name"><br>
 
@@ -120,7 +120,7 @@
             </div>
 
             <label for="imgs">Images</label><br>
-            <input type="file" id="imgs" multiple><br>
+            <input type="file" id="imgs" name="image" multiple><br>
 
             <input type="submit" value="Submit">
         </form>
