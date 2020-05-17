@@ -10,6 +10,42 @@ from django.db.models import Q
 from PIL import Image, ImageOps
 from .models import Item, Review, Category, Image, CategoryImage
 
+
+class EditCategoryAdminView(TemplateView):
+    template_name = 'edit_category.html'
+
+    def get(self, request, *args, **kwargs):
+        print("get")
+        category = Category.objects.get(id=kwargs['id'])
+        context = {}
+        context['curent_category'] = category
+
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        print("patch")
+        update = request.POST
+        image_data = request.FILES
+        print("\n\n\n\n\n")
+        name = update['name']
+
+        category = Category.objects.get(id=kwargs['id'])
+        category.name = name
+        category.save()
+
+        if 'image' in image_data:
+
+            image = CategoryImage.objects.filter(category__id=category.id).first()
+            image.image = image_data['image']
+            image.category = category
+            image.save()
+
+        context = {}
+        context['curent_category'] = category
+
+        return render(request, self.template_name, context)
+
+
 class AddCategoryAdminView(TemplateView):
     template_name = 'add_category.html'
 

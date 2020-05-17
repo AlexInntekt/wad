@@ -19,7 +19,7 @@ class Item(models.Model):
     brand = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     stock = models.IntegerField()
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, related_name='items', null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='items', null=True)
 
     def __str__(self):
         return "#{} {} ".format(self.id, self.name)
@@ -48,4 +48,4 @@ class CategoryImage(models.Model):
     Object that references an image for different other models
     '''
     image = models.ImageField(upload_to='hubImages/categories', blank=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='images')
+    category = models.OneToOneField(Category, on_delete=models.CASCADE, related_name='image')
