@@ -100,16 +100,16 @@
     </form>
 
     <div class="reviews">
+        {% for review in reviews %}
         <div class="rev">
-            <p>Review 1</p>
+
+            <p>{{ review.text }}</p>
+            <hr>
         </div>
-        <div class="rev">
-            <p>Review 2</p>
-        </div>
-        <div class="rev">
-            <p>Review 3</p>
-        </div>
+        {% endfor %}
+
     </div>
+
 
     <hr>
 

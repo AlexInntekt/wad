@@ -21,6 +21,16 @@ class ConfirmPayView(TemplateView):
 class DetailView(DetailView):
     template_name = 'detail.html'
     model = Item
+    
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        ## the context is a list of the tasks of the Project##
+        ##THIS IS THE ERROR##
+        # context['tasks'] = Task.object.filter(list=Project) <---->HERE ((work with Task.object.all() ))
+        context['reviews'] = self.object.reviews.all()
+        context['message'] = "bau"
+        return(context)
 
 class ContactView(TemplateView):
     template_name = 'contact.html'
