@@ -32,6 +32,9 @@ class DetailView(DetailView):
         context['message'] = "bau"
         return(context)
 
+    def post(self, **kwargs):
+        return render("haha")
+
 class ContactView(TemplateView):
     template_name = 'contact.html'
 
