@@ -105,6 +105,9 @@
     </div>
 
     <div class="products-container">
+        {% for category in categories %}
+        <h2> {{category}} </h2>
+        {% endfor %}
 
         {% for object in object_list %}
         

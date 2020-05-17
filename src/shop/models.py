@@ -42,3 +42,10 @@ class Image(models.Model):
     image = models.ImageField(upload_to='hubImages/', blank=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='images')
 
+
+class CategoryImage(models.Model):
+    '''
+    Object that references an image for different other models
+    '''
+    image = models.ImageField(upload_to='hubImages/categories', blank=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='images')
