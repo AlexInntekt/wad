@@ -896,12 +896,6 @@ hr {
     flex-direction: column;
 }
 
-.rev {
-    border: 1px solid #000;
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-}
 
 .confirmation_pay {
     font-family: 'Ubuntu', sans-serif;
@@ -910,4 +904,56 @@ hr {
 .contact {
     font-family: 'Ubuntu', sans-serif;
     background-image: url('/static/images/double-bubble.png');
+}
+
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.rev {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.revbody {
+    border: 1px solid #000;
+    height: 50px;
+}
+
+.date {
+    margin-left: 85%;
+}
+
+.addpage {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.addpage h1 {
+    margin-bottom: 20px;
+}
+
+.addpage .container-fluid {
+    padding: 30px;
+    background-color: #ebebe0;
+}
+
+.addpage input, textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 2px solid #8b8c8b;
+}
+.addpage select {
+    width: 30%;
+    margin-bottom: 40px;
+    border: 2px solid #8b8c8b;
+}
+
+.addpage input[type="submit"] {
+    width: 20%;
+    margin: auto;
+    border-radius: 5px;
+    background-color: #ffd08a;
 }

@@ -47,7 +47,7 @@ class DetailView(TemplateView):
         post = request.POST
         new_review = Review()
         new_review.text = post['message']
-        new_review.author = 'Anonymous'
+        new_review.author = user
         new_review.item = current_object
         new_review.save()
 
@@ -64,7 +64,6 @@ class DetailView(TemplateView):
         obj = Item.objects.get(id=kwargs['id'])
         # reviews = Review.objects.filter(item__id=obj.id).first()
         reviews = obj.reviews.all()
-
         context = {}
         context['object'] = obj
         context['reviews'] = reviews

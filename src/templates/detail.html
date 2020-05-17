@@ -103,7 +103,13 @@
         {% for review in reviews %}
         <div class="rev">
 
-            <p>{{ review.text }}</p>
+            <p style="display: inline;">-</p>
+                <p class="uname" style="display: inline;">{{ review.author }}</p>
+                <p style="display: inline;">-</p><br><br>
+                <div class="revbody">
+                    <p>{{ review.text }}</p>
+                </div><br>
+                <p class="date" style="display: inline;">{{ review.datetime }}</p>
             <hr>
         </div>
         {% endfor %}
