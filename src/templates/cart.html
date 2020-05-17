@@ -36,8 +36,14 @@
                 <li><a href="{% url 'auth' %}">Log In</a></li>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
                 <li class="currentpage"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+
+                {% if user.is_staff %}
+                    <li><a href="{% url 'adminview' %}">Admin</a></li>
+                {% endif %}
             </ul>
+
         </div>
+
 
         {% if user.is_authenticated %}
            <p> Hello, {{ user }}! </p>

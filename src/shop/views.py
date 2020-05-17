@@ -9,6 +9,8 @@ from django.db.models import Q
 
 from .models import Item, Review
 
+class AdminView(TemplateView):
+    template_name = 'admin.html'
 
 class CartView(TemplateView):
     template_name = 'cart.html'
