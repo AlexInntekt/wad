@@ -20,12 +20,6 @@ class AddItemAdminView(TemplateView):
         print(post)
         print(image_data['image'])
 
-        # for image in images:
-        new_image = Image()
-        new_image.image = image_data['image']
-        new_image.item = Item.objects.all().last()
-        new_image.save()
-
         name = post['name']
         brand = post['brand']
         price = post['price']
@@ -43,6 +37,12 @@ class AddItemAdminView(TemplateView):
         new_item.data = data
 
         new_item.save()
+
+        # for image in images:
+        new_image = Image()
+        new_image.image = image_data['image']
+        new_image.item = new_item
+        new_image.save()
 
 
         return render(request, self.template_name, {})
