@@ -7,10 +7,35 @@ from django.views.generic import DetailView
 from django.db.models import Q
 # from django.views.generic.edit import FormMixin
 
-from .models import Item, Review
+from .models import Item, Review, Category
 
 class AddItemAdminView(TemplateView):
     template_name = 'add_item.html'
+
+    def post(self, request, *args, **kwargs):
+        post = request.POST
+        print(post)
+
+        name = post['name']
+        brand = post['brand']
+        price = post['price']
+        stock = post['stock']
+        category = post['category']
+        category = Category.objects.filter(name__icontains=category).first()
+        data = {}
+
+        new_item = Item()
+        new_item.name = name
+        new_item.brand = brand
+        new_item.price = price
+        new_item.stock = stock
+        new_item.category = category
+        new_item.data = data
+
+        new_item.save()
+
+
+        return render(request, self.template_name, {})
 
 class AdminView(TemplateView):
     template_name = 'admin.html'

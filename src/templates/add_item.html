@@ -54,24 +54,21 @@
     <div class="" style="height: 1200px">
         <div class="container-fluid">
         <h1 style="text-align: center;">Add Item</h1>
-        <form action="">
+        <form action="" method="POST"> {% csrf_token %}
             <label for="iname">Item Name</label><br>
-            <input type="text" id="iname"><br>
-
-            <label for="data">Data</label><br>
-            <textarea id="data" rows="4" cols="50"></textarea><br>
+            <input type="text" id="iname" name="name"><br>
 
             <label for="brand">Brand</label><br>
-            <input type="text" id="brand"><br>
+            <input type="text" id="brand" name="brand"><br>
 
             <label for="price">Price</label><br>
-            <input type="text" id="price"><br>
+            <input type="text" id="price" name="price"><br>
 
             <label for="stock">Stock</label><br>
-            <input type="text" id="stock"><br>
+            <input type="text" id="stock" name="stock"><br>
 
             <label for="cat">Category</label><br>
-            <select id="cat" onchange="showSelect();">
+            <select id="cat" onchange="showSelect();" name="category">
                 <option value="transmission">Transmission</option>
                 <option value="engine">Engine</option>
                 <option value="body">Body</option>
