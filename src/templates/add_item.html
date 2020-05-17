@@ -53,39 +53,81 @@
 
     <div class="" style="height: 1200px">
         <div class="container-fluid">
-            <h1 style="text-align: center;">Add Item</h1>
-            <form action="">
-                <label for="iname">Item Name</label><br>
-                <input type="text" id="iname"><br>
+        <h1 style="text-align: center;">Add Item</h1>
+        <form action="">
+            <label for="iname">Item Name</label><br>
+            <input type="text" id="iname"><br>
 
-                <label for="data">Data</label><br>
-                <textarea id="data" rows="4" cols="50"></textarea><br>
+            <label for="data">Data</label><br>
+            <textarea id="data" rows="4" cols="50"></textarea><br>
 
-                <label for="brand">Brand</label><br>
-                <input type="text" id="brand"><br>
+            <label for="brand">Brand</label><br>
+            <input type="text" id="brand"><br>
 
-                <label for="price">Price</label><br>
-                <input type="text" id="price"><br>
+            <label for="price">Price</label><br>
+            <input type="text" id="price"><br>
 
-                <label for="stock">Stock</label><br>
-                <input type="text" id="stock"><br>
+            <label for="stock">Stock</label><br>
+            <input type="text" id="stock"><br>
 
-                <label for="cat">Category</label><br>
-                <select id="cat">
-                    <option value="transmission">Transmission</option>
-                    <option value="engine">Engine</option>
-                    <option value="body">Body</option>
-                    <option value="electric">Electric</option>
-                    <option value="brakes">Brakes</option>
-                    <option value="tires">Tires</option>
-                </select><br>
+            <label for="cat">Category</label><br>
+            <select id="cat" onchange="showSelect();">
+                <option value="transmission">Transmission</option>
+                <option value="engine">Engine</option>
+                <option value="body">Body</option>
+                <option value="electric">Electric</option>
+                <option value="brakes">Brakes</option>
+                <option value="tires">Tires</option>
+            </select><br>
 
-                <label for="imgs">Images</label><br>
-                <input type="file" id="imgs" multiple><br>
+            <div id="engineopt" style="display: none;">
+                <label for="power">Power</label><br>
+                <input type="text" id="power"><br>
+                <label for="cc">Cylinder Capacity</label><br>
+                <input type="text" id="cc"><br>
+            </div>
 
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+            <div id="transmissionopt" style="display: none;">
+                <label for="fluid">Fluid Type</label><br>
+                <input type="text" id="fluid"><br>
+                <label for="turbine">Turbine Type</label><br>
+                <input type="text" id="turbine"><br>
+            </div>
+
+            <div id="bodyopt" style="display: none;">
+                <label for="doors">Number of Doors</label><br>
+                <input type="number" id="doors"><br>
+                <label for="width">Body Width</label><br>
+                <input type="number" id="width"><br>
+            </div>
+
+            <div id="electricopt" style="display: none;">
+                <label for="battery">Battery Power</label><br>
+                <input type="number" id="battery"><br>
+                <label for="alternator">Alternator Type</label><br>
+                <input type="text" id="alternator"><br>
+            </div>
+
+            <div id="tiresopt" style="display: none;">
+                <label for="tiretype">Tire Type</label><br>
+                <input type="text" id="power"><br>
+                <label for="diameter">Diameter</label><br>
+                <input type="number" id="diameter"><br>
+            </div>
+
+            <div id="brakesopt" style="display: none;">
+                <label for="material">Brakes Material</label><br>
+                <input type="text" id="material"><br>
+                <label for="discrad">Disc Radius</label><br>
+                <input type="number" id="discrad"><br>
+            </div>
+
+            <label for="imgs">Images</label><br>
+            <input type="file" id="imgs" multiple><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
           
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -99,6 +141,50 @@
             crossorigin="anonymous"></script>
         <script src="{% static 'js/homescript.js' %}"}></script>
        
+       <script>
+        function showSelect() {
+            var d = document.getElementById("cat");
+            var engine = document.getElementById("engineopt");
+            var transmission = document.getElementById("transmissionopt");
+            var body = document.getElementById("bodyopt");
+            var electric = document.getElementById("electricopt");
+            var tires = document.getElementById("tiresopt");
+            var brakes = document.getElementById("brakesopt");
+            var display = d.options[d.selectedIndex].text;
+
+            if (display === "Engine")
+                engine.setAttribute("style", "display: show;")
+            else
+                engine.style.display = "none";
+
+            if (display === "Transmission")
+                transmission.setAttribute("style", "display: show;")
+            else
+                transmission.style.display = "none";
+
+            if (display === "Body")
+                body.setAttribute("style", "display: show;")
+            else
+                body.style.display = "none";
+
+            if (display === "Electric")
+                electric.setAttribute("style", "display: show;")
+            else
+                electric.style.display = "none";
+
+            if (display === "Brakes")
+                brakes.setAttribute("style", "display: show;")
+            else
+                brakes.style.display = "none";
+
+            if (display === "Tires")
+                tires.setAttribute("style", "display: show;")
+            else
+                tires.style.display = "none";
+        }
+    </script>
+
+
     </div>
 </body>
 
