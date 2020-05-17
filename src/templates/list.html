@@ -51,7 +51,20 @@
 
     <div class="swiper-container">
         <div class="swiper-wrapper">
+
+            {% for category in categories %}
+            <!-- <h2>  </h2> -->
             <div class="swiper-slide">
+                <div class="imgbox">
+                    <img src="/media/{{category.images.first.image}}">
+                    <a href="">
+                        <h1>{{category.name}}</h1>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- <div class="swiper-slide">
                 <div class="imgbox">
                     <img src="{% static 'images/trans.jpg' %}">
                     <a href="">
@@ -98,16 +111,13 @@
                         <h1>Tires</h1>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 
     <div class="products-container">
-        {% for category in categories %}
-        <h2> {{category}} </h2>
-        {% endfor %}
 
         {% for object in object_list %}
         
