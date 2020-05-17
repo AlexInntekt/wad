@@ -8,10 +8,39 @@ from django.db.models import Q
 
 # from django.views.generic.edit import FormMixin
 from PIL import Image, ImageOps
-from .models import Item, Review, Category, Image
+from .models import Item, Review, Category, Image, CategoryImage
+
+class AddCategoryAdminView(TemplateView):
+    template_name = 'add_category.html'
+
+    def post(self, request, *args, **kwargs):
+        post = request.POST
+        image_data = request.FILES
+        print("\n\n\n\n\n")
+        name = post['name']
+
+        new_category = Category()
+        new_category.name = name
+        new_category.save()
+
+        new_image = CategoryImage()
+        new_image.image = image_data['image']
+        new_image.category = new_category
+        new_image.save()
+
+        return render(request, self.template_name, {})
+
 
 class AddItemAdminView(TemplateView):
     template_name = 'add_item.html'
+
+    def get(self, request, *args, **kwargs):
+
+        context = {}
+
+        context['categories'] = Category.objects.all()
+
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         post = request.POST
@@ -56,8 +85,18 @@ class AddItemAdminView(TemplateView):
 
         return render(request, self.template_name, {})
 
+
 class AdminView(TemplateView):
     template_name = 'admin.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        items = Item.objects.all()
+        categories = Category.objects.all()
+        context['items'] = items
+        context['categories'] = categories
+
+        return context
 
 class CartView(TemplateView):
     template_name = 'cart.html'

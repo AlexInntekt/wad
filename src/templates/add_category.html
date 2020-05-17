@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body class="admin">
-
+<body class="addpage">
+    
     <nav class="mynav">
         <div class="mylogo"><i class="fa fa-tools fa-2x"></i></div>
         <div class="mybrand">AutoParts</div>
@@ -48,65 +48,39 @@
         {% endif %}
     </nav>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    
-    
+        <br>
 
-    <div class="container">
-      <div class="row">
 
-        <div class="col-sm">
-          <a href="{% url 'additem' %}"> Add item</a> 
-          <br>
-          <hr style="width: 100%">
-          <br>
-          {% for item in items %}
-            <a href="">
-                {{ item.name }}
-            </a>
-            <br>
-          {% endfor %}
+    <div class="" style="height: 1200px">
+        <div class="container-fluid">
+        <br>
+        <h1 style="text-align: center;">Add Category</h1>
+        <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <label for="name">Category Name</label><br>
+            <input type="text" id="name" name="name"><br>
 
-        </div>
+            <label for="imgs">Images</label><br>
+            <input type="file" id="imgs" name="image" multiple><br>
 
-        <div class="col-sm">
-          <a href="{% url 'addcategory' %}"> Add category</a>
-          <br>
-          <hr style="width: 100%">
-          <br>
-          {% for category in categories %}
-            <a href="">
-                {{ category.name }}
-            </a>
-            <br>
-          {% endfor %}
-        </div>
-
-      </div>
+            <input type="submit" value="Submit">
+        </form>
     </div>
-     
+          
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+        <script src="{% static 'js/homescript.js' %}"}></script>
+       
 
 
-  
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script src="{% static 'js/homescript.js' %}"}></script>
-     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrgI8h6-yZ5kTiK_loaoEKg56SiGrLm0U&callback=initMap">
-        </script>
-
-
+    </div>
 </body>
 
 </html>

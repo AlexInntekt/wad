@@ -69,12 +69,15 @@
 
             <label for="cat">Category</label><br>
             <select id="cat" onchange="showSelect();" name="category">
-                <option value="transmission">Transmission</option>
+                {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+           <!--      <option value="transmission">Transmission</option>
                 <option value="engine">Engine</option>
                 <option value="body">Body</option>
                 <option value="electric">Electric</option>
                 <option value="brakes">Brakes</option>
-                <option value="tires">Tires</option>
+                <option value="tires">Tires</option> -->
             </select><br>
 
             <div id="engineopt" style="display: none;">
