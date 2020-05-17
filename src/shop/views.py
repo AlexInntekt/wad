@@ -37,13 +37,19 @@ class DetailView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         current_object = Item.objects.get(id=kwargs['id'])
+        
+        user = 'Anonymous'
+        try:
+            user = request.user
+        except Exception:
+            pass
+
         post = request.POST
         new_review = Review()
         new_review.text = post['message']
         new_review.author = 'Anonymous'
-        new_review.save()
         new_review.item = current_object
-
+        new_review.save()
 
         obj = current_object
         reviews = obj.reviews.all()

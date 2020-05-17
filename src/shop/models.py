@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 
+from datetime import datetime 
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -28,6 +29,7 @@ class Review(models.Model):
     author = models.CharField(max_length=30)
     text = models.TextField()
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews', null=True)
+    datetime = models.DateTimeField(null=False, default=datetime.now())
 
     def __str__(self):
         return "#{}. ({}) {}".format(self.id, self.item.name, self.text)
