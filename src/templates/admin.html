@@ -64,7 +64,7 @@
           <hr style="width: 100%">
           <br>
           {% for item in items %}
-            <a href="">
+            <a href="{% url 'edititem' id=item.id %}">
                 {{ item.name }}
             </a>
             <br>

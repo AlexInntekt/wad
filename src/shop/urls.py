@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SearchView, ListView, DetailView, AdminView, AddItemAdminView, AddCategoryAdminView, EditCategoryAdminView
+from .views import SearchView, ListView, DetailView, AdminView, AddItemAdminView, AddCategoryAdminView, EditCategoryAdminView, EditItemAdminView
 
 urlpatterns = [
 	path('search', SearchView.as_view(), name='search'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('administrare/add_item', AddItemAdminView.as_view(), name='additem'),
     path('administrare/add_category', AddCategoryAdminView.as_view(), name='addcategory'),
     path('administrare/edit_category/id=<int:id>', EditCategoryAdminView.as_view(), name='editcategory'),
+    path('administrare/edit_item/id=<int:id>', EditItemAdminView.as_view(), name='edititem'),
 ]
