@@ -83,7 +83,7 @@ class EditItemAdminView(TemplateView):
         context = {}
 
         context['categories'] = Category.objects.all()
-        context['object'] = Item.objects.get(id=kwargs['id'])
+        context['item'] = Item.objects.get(id=kwargs['id'])
 
         return render(request, self.template_name, context)
 

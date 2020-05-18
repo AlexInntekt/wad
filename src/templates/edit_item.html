@@ -56,21 +56,24 @@
         <h1 style="text-align: center;">Edit Item</h1>
         <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             <label for="name">Item Name</label><br>
-            <input type="text" id="name" name="name"><br>
+            <input type="text" id="name" name="name" value="{{ item.name }}"><br>
 
             <label for="brand">Brand</label><br>
-            <input type="text" id="brand" name="brand"><br>
+            <input type="text" id="brand" name="brand" value="{{ item.brand }}"><br>
 
             <label for="price">Price</label><br>
-            <input type="text" id="price" name="price"><br>
+            <input type="text" id="price" name="price" value="{{ item.price }}"><br>
 
             <label for="stock">Stock</label><br>
-            <input type="text" id="stock" name="stock"><br>
+            <input type="text" id="stock" name="stock" value="{{ item.stock }}"><br>
 
 
             <label for="cat">Category</label><br>
             <select id="cat" onchange="showSelect();" name="category">
                 {% for category in categories %}
+                    {% if category.name == item.category.name %}
+                        <option value="{{ category.name }}" selected="selected">{{ category.name }}</option>
+                    {% endif %}
                 <option value="{{ category.name }}">{{ category.name }}</option>
                 {% endfor %}
            <!--      <option value="transmission">Transmission</option>
