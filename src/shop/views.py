@@ -87,48 +87,54 @@ class EditItemAdminView(TemplateView):
 
         return render(request, self.template_name, context)
 
-    # def post(self, request, *args, **kwargs):
-    #     post = request.POST
-    #     image_data = request.FILES
-    #     print("\n\n\n\n\n")
-    #     # print(post)
-    #     # print(image_data['image'])
+    def post(self, request, *args, **kwargs):
+        post = request.POST
+        image_data = request.FILES
+        print("\n\n\n\n\n")
+        # print(post)
+        # print(image_data['image'])
 
-    #     dynamic_fields = {}
+        dynamic_fields = {}
 
-    #     # print(post)
-    #     for key,value in post.items():
-    #         # print(value)
-    #         if key not in ['name','brand','price','stock','category','engine', 'csrfmiddlewaretoken'] and value != '':
-    #             print("{}:{} \n".format(key,value))
-    #             dynamic_fields[key] = value
+        # print(post)
+        for key,value in post.items():
+            # print(value)
+            if key not in ['name','brand','price','stock','category','engine', 'csrfmiddlewaretoken'] and value != '':
+                print("{}:{} \n".format(key,value))
+                dynamic_fields[key] = value
 
-    #     name = post['name']
-    #     brand = post['brand']
-    #     price = post['price']
-    #     stock = post['stock']
-    #     category = post['category']
-    #     category = Category.objects.filter(name__icontains=category).first()
-    #     data = dynamic_fields
+        name = post['name']
+        brand = post['brand']
+        price = post['price']
+        stock = post['stock']
+        category = post['category']
+        category = Category.objects.filter(name__icontains=category).first()
+        data = dynamic_fields
 
-    #     new_item = Item()
-    #     new_item.name = name
-    #     new_item.brand = brand
-    #     new_item.price = price
-    #     new_item.stock = stock
-    #     new_item.category = category
-    #     new_item.data = data
+        new_item = Item.objects.get(id=kwargs['id'])
+        new_item.name = name
+        new_item.brand = brand
+        new_item.price = price
+        new_item.stock = stock
+        new_item.category = category
+        new_item.data = data
 
-    #     new_item.save()
+        new_item.save()
 
-    #     # for image in images:
-    #     new_image = Image()
-    #     new_image.image = image_data['image']
-    #     new_image.item = new_item
-    #     new_image.save()
+        # for image in images:
+        if 'image' in image_data:
+            new_image = Image()
+            new_image.image = image_data['image']
+            new_image.item = new_item
+            new_image.save()
+
+        context = {}
+
+        context['categories'] = Category.objects.all()
+        context['item'] = Item.objects.get(id=kwargs['id'])
 
 
-    #     return render(request, self.template_name, {})
+        return render(request, self.template_name, context)
 
 class AddItemAdminView(TemplateView):
     template_name = 'add_item.html'
