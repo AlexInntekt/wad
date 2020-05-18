@@ -129,8 +129,18 @@
             <label for="imgs">Images</label><br>
             <input type="file" id="imgs" name="image" multiple><br>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Save" class="btn btn-primary" style="width: 85px; background-color: blue; color: white">
         </form>
+        <br>
+        
+        <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+            <input type="hidden" id="delete" name="delete"><br>
+
+            <input type="submit" value="Delete" class="btn btn-danger" style="width: 85px; background-color: red; color: white">
+
+        </form>
+
     </div>
           
 

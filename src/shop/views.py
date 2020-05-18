@@ -96,6 +96,13 @@ class EditItemAdminView(TemplateView):
 
         dynamic_fields = {}
 
+        try:
+            delete = post['delete']
+            Item.objects.get(id=kwargs['id']).delete()
+            return redirect('adminview')
+        except Exception as e:
+            print(e)
+
         # print(post)
         for key,value in post.items():
             # print(value)
